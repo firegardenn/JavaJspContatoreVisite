@@ -4,22 +4,19 @@
   https://contatorevisitejava.herokuapp.com/
   https://contatorevisitejava.herokuapp.com/welcome
 */
+<%@page import="java.io.*"%>
+//<%@page package servlet%>
 
-//package servlet;
+<%@page import="java.io.IOException"%>
+<%@page import="java.io.PrintWriter"%>
+<%@page import="javax.servlet.ServletException"%>
+<%@page import="javax.servlet.http.HttpServlet"%>
+<%@page import="javax.servlet.annotation.WebServlet"%>
+<%@page import="javax.servlet.http.HttpSession"%>
+<%@page import="javax.servlet.http.HttpServletRequest"%>
+<%@page import="javax.servlet.http.HttpServletResponse"%>
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-@WebServlet(
-     name = "AppServlet",
-     urlPatterns = {"/welcome"}
-)
-public class App extends HttpServlet
+<%public class App extends HttpServlet
 {
      //Instance variable used for counting hits on this servlet
      private static final long serialVersionUID = -3967314453512919811L;
