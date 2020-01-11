@@ -1,4 +1,4 @@
-<% @ page import = "java.io.*,java.util.*" %>
+<%@ page import = "java.io.*,java.util.*" %>
 <%
    // Get session creation time.
    Date createTime = new Date(session.getCreationTime());
