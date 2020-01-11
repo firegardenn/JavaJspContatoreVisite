@@ -1,20 +1,6 @@
 <html>
   <body>
-<% /*heroku link
-  https://contatorevisitejava.herokuapp.com/
-  https://contatorevisitejava.herokuapp.com/welcome
-*/
-<%@page import="java.io.*"%>
-//<%@page package servlet%>
-
-<%@page import="java.io.IOException"%>
-<%@page import="java.io.PrintWriter"%>
-<%@page import="javax.servlet.ServletException"%>
-<%@page import="javax.servlet.http.HttpServlet"%>
-<%@page import="javax.servlet.annotation.WebServlet"%>
-<%@page import="javax.servlet.http.HttpSession"%>
-<%@page import="javax.servlet.http.HttpServletRequest"%>
-<%@page import="javax.servlet.http.HttpServletResponse"%>
+<% @page import="package, java.io.*, java.io.IOException, java.io.IOException, java.io.PrintWriter, javax.servlet.ServletException, javax.servlet.http.HttpServlet, javax.servlet.annotation.WebServlet, javax.servlet.http.HttpSession,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse"%>
 
 <%public class App extends HttpServlet
 {
