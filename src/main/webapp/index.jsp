@@ -1,43 +1,65 @@
+<% @ page import = "java.io.*,java.util.*" %>
+<%
+   // Get session creation time.
+   Date createTime = new Date(session.getCreationTime());
+   
+   // Get last access time of this Webpage.
+   Date lastAccessTime = new Date(session.getLastAccessedTime());
+
+   String title = "Welcome Back to my website";
+   Integer visitCount = new Integer(0);
+   String visitCountKey = new String("visitCount");
+   String userIDKey = new String("userID");
+   String userID = new String("ABCD");
+
+   // Check if this is new comer on your Webpage.
+   if (session.isNew() ){
+      title = "Welcome to my website";
+      session.setAttribute(userIDKey, userID);
+      session.setAttribute(visitCountKey,  visitCount);
+   } 
+   visitCount = (Integer)session.getAttribute(visitCountKey);
+   visitCount = visitCount + 1;
+   userID = (String)session.getAttribute(userIDKey);
+   session.setAttribute(visitCountKey,  visitCount);
+%>
+
 <html>
-  <body>
-<% @page import="package, java.io.*, java.io.IOException, java.io.IOException, java.io.PrintWriter, javax.servlet.ServletException, javax.servlet.http.HttpServlet, javax.servlet.annotation.WebServlet, javax.servlet.http.HttpSession,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse"%>
-
-<%public class App extends HttpServlet
-{
-     //Instance variable used for counting hits on this servlet
-     private static final long serialVersionUID = -3967314453512919811L;
-     //private int iHitCounter;
-
-     //init method just initializes the hitCounter to zero
-     public void init() throws ServletException
-     {
-          
-     }
-     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-     {
-          HttpSession session = request.getSession();
-          response.setContentType("text/html");
-          PrintWriter out =  response.getWriter();
-          
-          if(session.getAttribute("Counter")==null){
-               session.setAttribute("Counter", 1);
-               out.println("<h3>Benvenuto !</h3>");
-               out.println("E' la prima volta che visiti questo sito");
-          }
-          else{
-               session.setAttribute("Counter",(((int)session.getAttribute("Counter"))+1));
-               out.println("<form>");
-               out.println("<h3>Ciao!</h3>");
-               out.println("Hai visitato questo sito "+ session.getAttribute("Counter") + " volte.");
-               out.println("</form>");
-          }
-          
-     }
-     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-     {
-          doGet(request, response);
-     }
-}%>
-
-  </body>
+   <head>
+      <title>Session Tracking</title>
+   </head>
+   
+   <body>
+      <center>
+         <h1>Session Tracking</h1>
+      </center>
+      
+      <table border = "1" align = "center"> 
+         <tr bgcolor = "#949494">
+            <th>Session info</th>
+            <th>Value</th>
+         </tr> 
+         <tr>
+            <td>id</td>
+            <td><% out.print( session.getId()); %></td>
+         </tr> 
+         <tr>
+            <td>Creation Time</td>
+            <td><% out.print(createTime); %></td>
+         </tr> 
+         <tr>
+            <td>Time of Last Access</td>
+            <td><% out.print(lastAccessTime); %></td>
+         </tr> 
+         <tr>
+            <td>User ID</td>
+            <td><% out.print(userID); %></td>
+         </tr> 
+         <tr>
+            <td>Number of visits</td>
+            <td><% out.print(visitCount); %></td>
+         </tr> 
+      </table> 
+   
+   </body>
 </html>
